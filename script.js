@@ -35,7 +35,7 @@ const handleChat = () => {
     chatbox.scrollTo(0, chatbox.scrollHeight);
 
     // Handle special user messages before giving a predefined response
-    if (userMessage.toLowerCase() === "hi") {
+    if (userMessage.toLowerCase() === "hi" || userMessage.toLowerCase() === "hello") {
         setTimeout(() => {
             const incomingChatli = createChatLi("How can I assist you today? Choose one of the options:", "incoming");
             chatbox.appendChild(incomingChatli);
@@ -44,17 +44,33 @@ const handleChat = () => {
             chatbox.scrollTo(0, chatbox.scrollHeight);
         }, 600);
         return;
-    } else if (userMessage.toLowerCase == "1" || userMessage.toLowerCase == "2" || userMessage.toLowerCase == "3") {
-        const optionsMessage = createChatLi("We are scheduling your call with our executive", "incoming");
-        chatbox.appendChild(optionsMessage);
-        chatbox.scrollTo(0, chatbox.scrollHeight);
-    } else {
-        const incomingChatli = createChatLi("I have not got it", "incoming");
-        chatbox.appendChild(incomingChatli);
-        const optionsMessage = createChatLi("We are scheduling your call with our executive", "incoming");
-        chatbox.appendChild(optionsMessage);
-        chatbox.scrollTo(0, chatbox.scrollHeight);
     }
+    if (userMessage.toLowerCase() == "1") {
+        setTimeout(() => {
+        const optionsMessage = createChatLi("You can login to your Account by visiting MemberPortal and Still you want help Type 'call' to schedule a callback", "incoming");
+        chatbox.appendChild(optionsMessage);
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+        }, 600);
+        return;
+    } 
+
+    if (userMessage.toLowerCase() == "2" ) {
+        setTimeout(() => {
+            const optionsMessage = createChatLi("We Provide scoring Services: \n 1. Paper less Scoring, \n 2. Entry Systems\n", "incoming");
+            chatbox.appendChild(optionsMessage);
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+        }, 600);
+        return;
+    } 
+
+    if (userMessage.toLowerCase() == "3" || userMessage.toLowerCase() == "call" ) {
+        setTimeout(() => {
+            const optionsMessage = createChatLi("We are scheduling your call with our executive", "incoming");
+            chatbox.appendChild(optionsMessage);
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+        }, 600);
+        return;
+    } 
 
     if (userMessage.toLowerCase().includes("help")) {
         setTimeout(() => {
@@ -62,6 +78,7 @@ const handleChat = () => {
             chatbox.appendChild(incomingChatli);
             const optionsMessage = createChatLi("1. I can provide information on your account.\n2. I can help with our services.\n3. I can connect you with support.", "incoming");
             chatbox.appendChild(optionsMessage);
+
             chatbox.scrollTo(0, chatbox.scrollHeight);
         }, 600);
         return;
